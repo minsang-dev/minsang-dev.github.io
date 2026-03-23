@@ -10,22 +10,16 @@ import {
 
 const TIMELINE_ITEMS = [
     {
-        date: "2026.01",
-        title: "CONY",
-        subtitle: "기프티콘 관리 서비스",
+        date: "2026.01 ~ 02",
+        title: "소셜 쇼핑 및 정산 플랫폼",
+        subtitle: "실시간 화상 및 정산 서비스",
         type: "project" as const,
     },
     {
-        date: "2025.11",
-        title: "SsaveryTime",
-        subtitle: "SSAFY 커뮤니티 플랫폼",
+        date: "2025.12",
+        title: "ZIP-CHACK",
+        subtitle: "원룸 리뷰 & 정보 플랫폼",
         type: "project" as const,
-    },
-    {
-        date: "2024.02",
-        title: "전남대학교 졸업",
-        subtitle: "",
-        type: "education" as const,
     },
     {
         date: "2025.07",
@@ -33,23 +27,18 @@ const TIMELINE_ITEMS = [
         subtitle: "Java 전공",
         type: "education" as const,
     },
+
     {
-        date: "2025.06",
-        title: "정보처리기사",
-        subtitle: "국가기술자격",
-        type: "certification" as const,
-    },
-    {
-        date: "2025.04",
-        title: "SQLD",
-        subtitle: "SQL 개발자",
-        type: "certification" as const,
-    },
-    {
-        date: "2024.04",
+        date: "2024.04 ~ 10",
         title: "RE:VIBE",
         subtitle: "이커머스 기반 플랫폼",
         type: "project" as const,
+    },
+    {
+        date: "2024.02",
+        title: "전남대학교 졸업",
+        subtitle: "",
+        type: "education" as const,
     },
 ]
 

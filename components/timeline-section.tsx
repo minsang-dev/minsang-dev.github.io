@@ -12,24 +12,17 @@ import {
 const TIMELINE_ITEMS = [
     {
         date: "2026.01 ~ 02",
-        title: "CONY",
-        description: "기프티콘 관리 및 판매 서비스. 6인 팀 리더, 백엔드 & 인프라 담당.\n🏆 우수 프로젝트 수상",
+        title: "실시간 소셜 쇼핑 및 정산 플랫폼",
+        description: "비대면 쇼핑 시 화상 공유와 정밀한 N분의 1 정산 제공.\nWebRTC 및 CI/CD 인프라 구축.",
         side: "left" as const,
         type: "project" as const,
     },
     {
-        date: "2025.11 ~ 12",
-        title: "SsaveryTime",
-        description: "SSAFY 통합 익명 커뮤니티. 2인 팀 Full-Stack 개발.",
+        date: "2025.12",
+        title: "ZIP-CHACK",
+        description: "실거주자의 솔직한 리뷰와 AI 상권 분석 기능을 결합한 원룸/오피스텔 부동산 플랫폼.",
         side: "left" as const,
         type: "project" as const,
-    },
-    {
-        date: "2024.02",
-        title: "전남대학교 졸업",
-        description: "",
-        side: "right" as const,
-        type: "education" as const,
     },
     {
         date: "2025.07",
@@ -55,9 +48,16 @@ const TIMELINE_ITEMS = [
     {
         date: "2024.04 ~ 10",
         title: "RE:VIBE",
-        description: "이커머스 기반 플랫폼",
+        description: "한정판 스니커즈 리셀 플랫폼.\n대규모 트래픽 대비 분산락 등 서버 최적화 진행.",
         side: "left" as const,
         type: "project" as const,
+    },
+    {
+        date: "2024.02",
+        title: "전남대학교 졸업",
+        description: "",
+        side: "right" as const,
+        type: "education" as const,
     },
 ]
 

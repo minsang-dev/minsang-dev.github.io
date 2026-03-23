@@ -21,7 +21,7 @@ const SKILLS = {
     "Distributed Systems"
   ],
   awards: [
-    { title: "SSAFY 14기 특화 프로젝트 최우수상", date: "2025.11", org: "삼성 청년 SW 아카데미 (SSAFY)", description: "ZIPCHACK" },
+    { title: "SSAFY 14기 관통 프로젝트 우수상", date: "2025.11", org: "삼성 청년 SW 아카데미 (SSAFY)", description: "ZIPCHACK" },
     { title: "SSAFY 14기 공통 프로젝트 우수상", date: "2026.02", org: "삼성 청년 SW 아카데미 (SSAFY)", description: "SHOPPY" },
   ],
   certifications: [] as { name: string; date: string; link: string }[],
