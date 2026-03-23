@@ -12,12 +12,12 @@ export default function ProjectCard({ project }: { project: Project }) {
       <Card className="group cursor-pointer overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg flex flex-col h-full bg-card">
         {/* Project Thumbnail */}
         {project.image && (
-          <div className="relative w-full h-48 overflow-hidden border-b border-border">
+          <div className="relative w-full h-56 overflow-hidden border-b border-border bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center p-4">
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              className="object-contain transition-transform duration-500 group-hover:scale-105 p-2"
             />
             {/* Award Badge */}
             {project.award && (
