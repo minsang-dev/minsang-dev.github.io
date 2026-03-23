@@ -31,20 +31,7 @@ const TIMELINE_ITEMS = [
         side: "right" as const,
         type: "education" as const,
     },
-    {
-        date: "2025.06",
-        title: "정보처리기사 취득",
-        description: "한국산업인력공단 국가기술자격",
-        side: "right" as const,
-        type: "certification" as const,
-    },
-    {
-        date: "2025.04",
-        title: "SQLD 취득",
-        description: "SQL 개발자 자격증",
-        side: "right" as const,
-        type: "certification" as const,
-    },
+
     {
         date: "2024.04 ~ 10",
         title: "RE:VIBE",
@@ -114,7 +101,7 @@ export default function TimelineSection() {
                     <div className="w-10" />
                     <div className="w-[calc(50%-20px)] text-left">
                         <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 border-0">
-                            <GraduationCap className="w-3 h-3 mr-1" /> Education & Certifications
+                            <GraduationCap className="w-3 h-3 mr-1" /> Education
                         </Badge>
                     </div>
                 </div>
