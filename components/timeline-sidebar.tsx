@@ -11,7 +11,7 @@ import {
 const TIMELINE_ITEMS = [
     {
         date: "2026.01 ~ 02",
-        title: "소셜 쇼핑 및 정산 플랫폼",
+        title: "SHOPPY",
         subtitle: "실시간 화상 및 정산 서비스",
         type: "project" as const,
     },

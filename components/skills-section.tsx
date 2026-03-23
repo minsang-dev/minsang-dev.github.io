@@ -11,12 +11,11 @@ const SKILLS = {
     "JPA",
     "RESTful API",
     "MySQL",
-    "CouchDB",
   ],
   infrastructure: [
-    "Hyperledger Fabric",
     "Docker",
     "CI/CD",
+    "Jenkins",
     "System Architecture",
     "Distributed Systems"
   ],

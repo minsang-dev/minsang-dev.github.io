@@ -12,15 +12,15 @@ import {
 const TIMELINE_ITEMS = [
     {
         date: "2026.01 ~ 02",
-        title: "실시간 소셜 쇼핑 및 정산 플랫폼",
-        description: "비대면 쇼핑 시 화상 공유와 정밀한 N분의 1 정산 제공.\nWebRTC 및 CI/CD 인프라 구축.",
+        title: "SHOPPY",
+        description: "비대면 화상 공유 및 정밀한 N분의 1 정산 플랫폼.\nWebRTC 인프라 및 CI/CD 파이프라인 구축.",
         side: "left" as const,
         type: "project" as const,
     },
     {
         date: "2025.12",
         title: "ZIP-CHACK",
-        description: "실거주자의 솔직한 리뷰와 AI 상권 분석 기능을 결합한 원룸/오피스텔 부동산 플랫폼.",
+        description: "원룸 리뷰 및 AI 상권 분석을 제공하는 부동산 플랫폼.\nWebSocket 실시간 채팅 및 통신 상태 동기화 구현.",
         side: "left" as const,
         type: "project" as const,
     },

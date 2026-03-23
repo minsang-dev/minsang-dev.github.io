@@ -75,7 +75,7 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: "ZIP-CHACK (집착) - 꼼꼼하게 따져보는 원룸 리뷰 & 정보 플랫폼",
+    title: "ZIP-CHACK - 꼼꼼하게 따져보는 원룸 리뷰 & 정보 플랫폼",
     period: "2025.12.08 - 2025.12.29",
     role: "Backend Engineer",
     techStack: ["Java 17", "Spring Boot", "Spring Security", "JPA", "WebSocket", "MySQL", "AWS S3", "Docker", "Vue 3"],
@@ -160,7 +160,7 @@ const PROJECTS = [
   },
   {
     id: 3,
-    title: "실시간 소셜 쇼핑 및 정산 플랫폼",
+    title: "SHOPPY - 실시간 소셜 쇼핑 및 정산 플랫폼",
     period: "2026.01 - 2026.02",
     role: "Backend Engineer (Infra)",
     techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "OpenVidu (WebRTC)", "AWS EC2", "Docker", "Jenkins", "Nginx"],
