@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Github, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 export default function HeroSection() {
   return (
@@ -12,7 +13,19 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-        <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="mb-6 animate-in fade-in zoom-in duration-1000">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/30 shadow-[0_0_30px_rgba(var(--primary),0.3)] ring-8 ring-primary/5">
+            <Image
+              src="profile.jpg"
+              alt="Profile"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+
+        <div className="mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
           <Badge variant="secondary" className="px-4 py-1.5 text-sm font-medium rounded-full border-primary/20 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
             Backend Engineer
           </Badge>

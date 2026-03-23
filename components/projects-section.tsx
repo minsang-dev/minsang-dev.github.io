@@ -12,7 +12,7 @@ const PROJECTS = [
     task: "데이터의 '무결성(Integrity)'을 보장하면서도, 인가된 사용자만 참여시켜 데이터 품질을 유지할 수 있는 '허가형 블록체인 시스템' 구축이 필요했습니다.",
     action: "1. Hyperledger Fabric을 도입하여 참여자를 제한하는 멤버십 서비스(MSP)를 구축했습니다.\n2. 데이터 성격에 따라 3-Tier(MySQL-CouchDB-Fabric) 저장소 분리 아키텍처를 설계하여 성능 효율을 높였습니다.\n3. 스마트 컨트랙트(Chaincode)로 검증 로직을 자동화하여 휴먼 에러를 최소화했습니다.",
     result: "데이터 위변조를 원천 차단하고 무의미한 데이터 생성을 방지하여, 신뢰도 99%의 고품질 데이터 수집 파이프라인을 완성했습니다.",
-    image: "/projects/project1-thumbnail.png", // Replace with project screenshot
+    image: "projects/project1-thumbnail.png", // Replace with project screenshot
     // architecture: "/architecture-placeholder.png" // Uncomment when you have an architecture diagram
   },
   {
@@ -29,7 +29,7 @@ const PROJECTS = [
       "1. 익명 소유권 검증 시스템: 익명 게시글 작성 시 userSeq를 DB에 NULL로 저장하고, 대신 게시글 ID와 사용자 ID를 조합한 SHA-256 해시값만 별도 테이블(AnonymousBoard)에 저장하여, DB에서 작성자를 역추적할 수 없으면서도 해시 비교를 통해 소유권 검증이 가능하도록 구현했습니다.\n2. 게시판 및 소셜 기능 API: Spring Boot + MyBatis 기반으로 게시글 CRUD, 좋아요/스크랩 토글, 게시글 신고, 키워드 검색 및 정렬, 페이징 조회 등의 RESTful API를 설계하고 구현했습니다. Spring Security + JWT 기반 인증/인가를 적용하고, Solved.ac API 연동으로 사용자 백준 티어 정보를 실시간 표시했습니다.\n3. AI 게시글 요약 서비스: FastAPI로 별도 AI 마이크로서비스를 구축하여, 200자 이상의 긴 게시글을 AI가 자동 요약하는 기능을 구현했습니다. 요약 결과를 DB에 캐싱하여 중복 호출을 방지했습니다.\n4. Docker Compose 인프라: Frontend, Backend, AI, Prometheus, Grafana 총 5개 서비스를 Docker Compose로 오케스트레이션하고, AWS EC2 + RDS 환경에 배포했습니다. Spring Boot Actuator 메트릭을 Prometheus로 수집하고 Grafana 대시보드로 실시간 모니터링 체계를 구축했습니다.",
     result:
       "2인 팀으로 6주 만에 서비스를 성공적으로 런칭했습니다. 해시 기반 익명 소유권 검증 시스템으로 보안 사고 없이 안전한 익명 소통 공간을 제공했으며, AI 요약 캐싱으로 중복 API 호출을 제거하고, Docker 기반 자동 배포 환경으로 운영 효율을 극대화했습니다.",
-    image: "/projects/project2-thumbnail.png", // Replace with project screenshot
+    image: "projects/project2-thumbnail.png", // Replace with project screenshot
     // architecture: "/ssaverytime-architecture.png", // Add architecture diagram here
     troubleshooting: {
       title: "API 403 Forbidden 에러와 Docker DB 스키마 동기화 이슈",
@@ -173,7 +173,7 @@ docker-compose up -d --build`}
       "1. 공유방 API 설계 및 구현: 공유방 CRUD, 초대 코드(UUID) 기반 참여 시스템, 방장/멤버 역할 분리(RoomRole), 강퇴 시 재가입 방지를 위한 BannedRoomMember 엔티티 등 세밀한 권한 관리 로직을 설계했습니다. JPA Specification을 활용한 동적 쿼리로 방 내 기프티콘의 상태별/키워드별 검색 및 페이징 조회를 구현했습니다.\n2. Docker Compose 멀티 서비스 오케스트레이션: 3개 백엔드 서비스를 각각 독립 컨테이너로 구성하고, 외부 Docker Network(cony-net)로 서비스 간 통신을 격리하면서도 연결성을 확보했습니다.\n3. Jenkins CI/CD 조건부 배포: Jenkinsfile에서 changeset 디렉티브를 활용해 변경된 서비스만 감지하여 선택적으로 빌드/배포하는 파이프라인을 구축했습니다. Jenkins Credentials를 통해 환경변수를 안전하게 주입하고, 빌드 후 자동 삭제하는 보안 프로세스를 적용했습니다.\n4. Prometheus + Grafana 모니터링: Spring Boot Actuator 메트릭을 Prometheus로 수집하고, Grafana 대시보드를 프로비저닝하여 서비스 상태, JVM 메모리, API 응답 시간 등을 실시간으로 모니터링할 수 있는 환경을 구축했습니다.\n5. Nginx 리버스 프록시: 외부 트래픽을 Nginx에서 받아 각 서비스 포트로 분배하는 리버스 프록시를 구성하여, 단일 도메인으로 모든 서비스에 접근할 수 있도록 했습니다.",
     result:
       "공유방 API를 통해 사용자 간 기프티콘 공유 핵심 기능을 안정적으로 제공했습니다. 변경된 서비스만 선택적으로 빌드/배포하여 CI/CD 소요 시간을 약 60% 단축했으며, Docker 기반 컨테이너 오케스트레이션으로 무중단 운영 환경을 구축했습니다. Prometheus + Grafana 모니터링으로 실시간 장애 감지 및 대응 체계를 확립하여, 프로젝트 기간 동안 인프라 장애로 인한 서비스 다운타임 없이 안정적으로 운영을 완료했습니다.",
-    image: "/projects/project3-thumbnail.png",
+    image: "projects/project3-thumbnail.png",
     award: "SSAFY 14기 공통 프로젝트 우수상",
     troubleshooting: {
       title: "공유방 기프티콘 썸네일 미표시 및 DTO 필드 누락 이슈",

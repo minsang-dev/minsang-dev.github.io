@@ -53,7 +53,7 @@ export default function Navbar() {
                         }`}
                 >
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
-                        PHJ
+                        KMS.dev
                     </span>
                 </button>
 

@@ -14,12 +14,13 @@ export default function AboutSection() {
           {/* Left Column: Profile Image & Quick Info */}
           <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 view-trigger">
             <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-primary/20 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
-              {/* Replace with your actual image path */}
+              {/* Profile image path - ensure it works on GitHub Pages */}
               <Image
-                src="/profile.jpg"
+                src="profile.jpg"
                 alt="Profile"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-500"
+                priority
               />
             </div>
 
