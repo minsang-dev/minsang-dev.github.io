@@ -3,6 +3,71 @@ import { CodeBlock } from "./troubleshooting-dialog"
 
 const PROJECTS = [
   {
+    id: 4,
+    title: "DONTTAz - 월급 로그아웃을 막아주는 나만의 비밀금고",
+    period: "2026.03.09 - 2026.03.27",
+    role: "Backend Engineer",
+    techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "RabbitMQ"],
+    situation: "빈번한 소액 자금 이동 시 발생하는 외부 오픈뱅킹 API의 호출 처리율 제한과 막대한 이체 수수료 문제가 있었습니다.",
+    task: "기존의 물리적 자금 이체 구조를 개편하여 API 수수료를 절감하고, 결제 정합성(1초 내 롤백)을 보장하는 내부 분산 트랜잭션 구조를 구축하는 것이었습니다.",
+    action: "1. 시스템 모계좌와 사용자별 내부 원장을 분리하여, 내부 거래는 Logical Transfer로 처리하도록 개편했습니다.\n2. @Transactional 적용 및 주기적 잔액 대사(Reconciliation)를 통해 내부 DB와 모계좌 잔액의 불일치를 차단했습니다.\n3. RabbitMQ를 활용한 비동기 보상 트랜잭션으로 결제 실패 시 즉각적인 롤백 로직을 붙였습니다.",
+    result: "내부 스왑 수수료를 100% 절감하였고, 외부망 장애로부터 무관한 높은 가용성을 확보했습니다. 부하 테스트를 통해 초당 1,000건의 요청에서도 99.9% 무결성을 증명했습니다.",
+    image: "projects/donttaz-thumbnail.png",
+    troubleshooting: {
+      title: "금융 API 수수료 최적화 및 모계좌 기반 내부 원장 아키텍처 설계",
+      date: "2026-03-24",
+      environment: "Spring Boot 3.x, JPA, MySQL 8.0, RabbitMQ",
+      sections: [
+        {
+          title: "1. 문제 상황 (Problem)",
+          content: (
+            <div className="space-y-4">
+              <p className="text-sm">
+                초기 설계에서는 유저 간, 혹은 가상 금고 간 자금 이동이 빈번하게 일어날 때마다 외부 오픈뱅킹 API(FinAPI)를 직접 호출했습니다.
+              </p>
+              <ul className="list-disc list-inside text-sm space-y-1">
+                <li><strong>초발/초과 API 호출:</strong> 과도한 호출로 인한 Rate Limit 도달 위험.</li>
+                <li><strong>막대한 이체 수수료 발생:</strong> 자금이동 횟수에 정비례하여 기하급수적으로 늘어나는 외부망 이체 수수료의 비즈니스적 한계.</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          title: "2. 해결 방법 (Solution)",
+          content: (
+            <div className="space-y-4">
+              <div>
+                <strong>2.1 시스템 모계좌 기반의 내부 원장 분리 (Logical Transfer)</strong>
+                <p className="text-sm mt-1">
+                  모든 자금 흐름을 하나의 물리적 통합 <strong>‘시스템 모계좌’</strong>에 고정하고, 서비스 앱 단에서는 가상 내부 원장의 <code>데이터만 업데이트</code>하는 방향으로 전체 아키텍처를 개편(<code>AccountTransferService</code>)했습니다.
+                </p>
+              </div>
+              <div>
+                <strong>2.2 무결성(Integrity) 검증 및 RabbitMQ 보상 트랜잭션 롤백</strong>
+                <p className="text-sm mt-1">
+                  DB 업데이트 과정에는 철저한 <code>@Transactional</code>을 적용하고, 주기적으로 실제 모계좌 잔고와 맞는지 <strong>대사(Reconciliation)</strong> 작업을 하도록 했습니다. 만약 중간 처리 단계에서 장애/지연이 생겼을 땐 비동기 메시지 버스인 RabbitMQ를 거쳐 즉각적인 보상 트랜잭션이 발행되게 하여 1초 이내 안전 롤백 체계를 확립했습니다.
+                </p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "3. 결과 (Result)",
+          content: (
+            <ul className="list-disc list-inside space-y-2 bg-slate-100 dark:bg-slate-900 p-4 rounded-md text-sm">
+              <li>
+                <strong>이체 수수료 비용 100% 최적화:</strong> 잦은 내부 이동을 Logical Transfer로 대체하면서 오픈 API 호출 수수료 0원을 달성했습니다.
+              </li>
+              <li>
+                <strong>가용성과 처리 속도의 도약:</strong> 무거운 외부 금융 시스템과의 통신 병목을 우회함으로써 백엔드 내부 메모리 연산 수준으로 트랜잭션 처리 속도가 껑충 뛰었습니다. 오프라인 망 장애에도 강한 탄력성을 체감했습니다.
+              </li>
+            </ul>
+          ),
+        },
+      ],
+    },
+  },
+  {
     id: 1,
     title: "ReVibe - 한정판 스니커즈 리셀 플랫폼",
     period: "2024.04 - 2024.10",

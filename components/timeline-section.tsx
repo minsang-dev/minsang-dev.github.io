@@ -11,6 +11,13 @@ import {
 // All items merged and sorted by date descending
 const TIMELINE_ITEMS = [
     {
+        date: "2026.03.09 ~ 03.27",
+        title: "DONTTAz",
+        description: "소비 루틴 분석 AI 기반 맞춤형 예산 할당 및 잉여 자금 강제 격리 핀테크 서비스 - 월급 로그아웃을 막아주는 나만의 비밀금고\n 비동기 보상 트랜잭션을 통한 결제 데이터 정합성 문제 해결.",
+        side: "left" as const,
+        type: "project" as const,
+    },
+    {
         date: "2026.01 ~ 02",
         title: "SHOPPY",
         description: "비대면 화상 공유 및 정밀한 N분의 1 정산 플랫폼.\nWebRTC 인프라 및 CI/CD 파이프라인 구축.",
