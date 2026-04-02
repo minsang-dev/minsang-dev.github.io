@@ -5,12 +5,12 @@ const PROJECTS = [
   {
     id: 4,
     title: "DONTTAz - 월급 로그아웃을 막아주는 나만의 비밀금고",
-    period: "2026.03.09 - 2026.03.27",
+    period: "2026.03",
     role: "Backend Engineer",
     techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "RabbitMQ"],
     situation: "빈번한 소액 자금 이동 시 발생하는 외부 오픈뱅킹 API의 호출 처리율 제한과 막대한 이체 수수료 문제가 있었습니다.",
     task: "기존의 물리적 자금 이체 구조를 개편하여 API 수수료를 절감하고, 결제 정합성(1초 내 롤백)을 보장하는 내부 분산 트랜잭션 구조를 구축하는 것이었습니다.",
-    action: "1. 시스템 모계좌와 사용자별 내부 원장을 분리하여, 내부 거래는 Logical Transfer로 처리하도록 개편했습니다.\n2. @Transactional 적용 및 주기적 잔액 대사(Reconciliation)를 통해 내부 DB와 모계좌 잔액의 불일치를 차단했습니다.\n3. RabbitMQ를 활용한 비동기 보상 트랜잭션으로 결제 실패 시 즉각적인 롤백 로직을 붙였습니다.",
+    action: "1. 시스템 모계좌와 사용자별 내부 원장을 분리하여, 내부 거래는 Logical Transfer로 처리하도록 개편했습니다.\n2. @Transactional 적용 및 주기적 잔액 대사를 통해 내부 DB와 모계좌 잔액의 불일치를 차단했습니다.\n3. RabbitMQ를 활용한 비동기 보상 트랜잭션으로 결제 실패 시 즉각적인 롤백 로직을 붙였습니다.",
     result: "내부 스왑 수수료를 100% 절감하였고, 외부망 장애로부터 무관한 높은 가용성을 확보했습니다. 부하 테스트를 통해 초당 1,000건의 요청에서도 99.9% 무결성을 증명했습니다.",
     image: "projects/donttaz-thumbnail.png",
     troubleshooting: {
