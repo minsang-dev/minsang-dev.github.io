@@ -68,71 +68,78 @@ const PROJECTS = [
     },
   },
   {
-    id: 1,
-    title: "ReVibe - 한정판 스니커즈 리셀 플랫폼",
-    period: "2024.04 - 2024.10",
-    role: "Backend Engineer (Auth & Concurrency Control)",
-    techStack: ["Spring Boot", "Spring Security", "JWT", "Redis", "Redisson", "MySQL", "Docker"],
-    situation: "대규모 트래픽이 예상되는 리셀 플랫폼에서 사용자 인증의 보안성과 선착순 이벤트의 안정성 확보가 시급했습니다.",
-    task: "JWT 기반의 보안 인증 시스템 구축 및 수만 건의 동시 쿠폰 발급 요청 시 데이터 부정합을 방지하고 응답 속도를 최적화하는 것이 주 목표였습니다.",
-    action: "1. Spring Security와 JWT를 연동하여 인증/인가를 구현하고, 카카오 소셜 로그인을 통해 접근성을 높였습니다.\n2. 선착순 쿠폰 발급의 동시성 제어를 위해 Synchronized, 비관적 락 등을 거쳐 최종적으로 Redisson 분산락을 도입했습니다.\n3. @Transactional과 락 해제 시점의 불일치를 해결하기 위해 분산락 로직을 AOP화하여 데이터 정합성을 보장했습니다.",
-    result: "10,000건의 동시 발급 테스트를 성공적으로 완료했으며, Redisson 도입으로 기존 방식 대비 처리 속도를 약 60% 이상 향상시켰습니다.",
-    image: "projects/project1-thumbnail.png",
+    id: 3,
+    title: "SHOPPY - 실시간 소셜 쇼핑 및 정산 플랫폼",
+    period: "2026.01 - 2026.02",
+    role: "Backend Engineer (Infra)",
+    techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "OpenVidu (WebRTC)", "AWS EC2", "Docker", "Jenkins", "Nginx"],
+    situation: "비대면 쇼핑 시 소통의 한계와 복잡한 N분의 1 정산 과정의 번거로움을 해결해야 했습니다.",
+    task: "WebRTC 기반의 실시간 화상 공유 인프라를 구축하고, 1원의 오차도 없는 정밀한 N분의 1 정산 시스템을 개발하는 것이 목표였습니다.",
+    action: "1. OpenVidu 및 Kurento Media Server를 Docker 컨테이너로 온프레미스 배포하고, 네트워크 최적화를 통해 연결 성공률을 높였습니다.\n2. BigDecimal을 사용하여 부동소수점 오차 없는 정산 로직을 구현하고 나머지 분배 알고리즘을 적용했습니다.\n3. Jenkins와 Webhook을 연동하여 백엔드/프론트엔드 CI/CD 자동화 파이프라인을 구축했습니다.",
+    result: "외부 네트워크에서도 안정적인 화상 통화 환경을 구축했으며, 어떠한 금액 산정에서도 오차가 발생하지 않는 무결한 정산 시스템을 완성했습니다.",
+    image: "projects/project3-thumbnail.png",
     troubleshooting: {
-      title: "선착순 쿠폰 발급 - Redisson 분산락 도입으로 정합성 및 성능 개선",
-      date: "2024-09-20",
-      environment: "Spring Boot 3.x, Spring Security 6, Redis, Redisson, MySQL",
+      title: "WebRTC 인프라 네트워크 이슈 및 정산 금액 무결성 보장",
+      date: "2026-02-15",
+      environment: "OpenVidu, Docker, AWS EC2, Spring Boot 3.x, MySQL",
       sections: [
         {
-          title: "1. 문제 상황 (Troubleshooting Cases)",
+          title: "1. 기술적 난관 (Technical Challenges)",
           content: (
             <div className="space-y-4">
-              <p className="text-sm">
-                초기에는 <code>synchronized</code> 키워드를 사용해 여러 스레드가 동시에 접근하는 것을 제한했지만, 단일 서버 환경에 국한되는 문제와 <code>@Transactional</code> 상호작용 이슈로 인해 동시성 제어가 완벽하지 않았습니다.
-              </p>
-              <ul className="list-disc list-inside text-sm space-y-1">
-                <li><strong>경합 조건(Race Condition):</strong> 쿠폰 수량 감소 시 여러 스레드가 동일한 재고를 읽어 초과 발급 발생.</li>
-                <li><strong>트랜잭션 커밋 이슈:</strong> <code>@Transactional</code>이 로직 수행 후 커밋되기 전 락이 먼저 풀려버리는 불일치 문제 확인.</li>
-              </ul>
-            </div>
-          ),
-        },
-        {
-          title: "2. 기술적 정지 및 의사 결정 (Decision Making)",
-          content: (
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-3 bg-slate-100 dark:bg-slate-900 rounded-lg">
-                  <h5 className="font-bold text-sm mb-1 line-through opacity-50">초기 시도: Synchronized/Pessimistic Lock</h5>
-                  <p className="text-xs">데이터 정합성은 확보되나, 무한 대기 현상 및 데드락 우려와 성능 저하(10s 이상) 발생.</p>
-                </div>
-                <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
-                  <h5 className="font-bold text-sm mb-1 text-primary">최종 선택: Redisson Distributed Lock</h5>
-                  <p className="text-xs">분산 환경에서도 일관성을 보장하며, 스핀 락 방식이 아닌 Pub/Sub 방식을 사용해 부하를 최소화하고 성능을 크게 개선.</p>
-                </div>
+              <div>
+                <strong>1.1 WebRTC 연결 실패 (ICE Connection Failed)</strong>
+                <p className="text-sm mt-1">
+                  Docker 컨테이너 내부에서 실행되는 OpenVidu 서버가 클라이언트(브라우저)와 P2P 연결을 시도할 때, 사설 IP(Private IP)를 반환하여 외부 네트워크에서의 접근이 차단되는 현상이 발생했습니다.
+                </p>
+              </div>
+              <div>
+                <strong>1.2 정산 금액의 무결성 문제 (1원의 차이)</strong>
+                <p className="text-sm mt-1">
+                  10,000원을 3명이 나눌 경우 3,333.33...원이 되어, 단순 합산 시 9,999원이 되는 오차가 발생했습니다. 금융 관련 기능에서 이러한 오차는 서비스 신뢰도 하락의 원인이 됩니다.
+                </p>
               </div>
             </div>
           ),
         },
         {
-          title: "3. 해결 방법 및 결과 (Implementation & Result)",
+          title: "2. 문제 해결 (Problem Solving)",
           content: (
             <div className="space-y-4">
-              <p className="text-sm">
-                분산락 로직을 <strong>AOP(Aspect-Oriented Programming)</strong>화하여 비즈니스 로직과 분리하고, 트랜잭션 수명 주기와 조절함으로써 정합성 문제를 근본적으로 해결했습니다.
-              </p>
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border border-slate-200 dark:border-slate-800">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded">성능 향상 결과</span>
-                </div>
-                <ul className="text-sm space-y-1">
-                  <li><strong>Synchronized:</strong> 10s 609ms (100명 요청)</li>
-                  <li><strong>Pessimistic Lock:</strong> 4s 406ms (100명 요청)</li>
-                  <li><strong>Redisson (AOP):</strong> <strong>4.5s (10,000명 요청 처리)</strong></li>
-                </ul>
+              <div>
+                <strong>2.1 Host Network Mode 및 Public IP 명시</strong>
+                <p className="text-sm mt-1">
+                  <code>docker-compose.yml</code>에서 OpenVidu 및 KMS 컨테이너의 네트워크 모드를 <code>host</code>로 설정하여 호스트의 네트워크 스택을 사용하게 하고, AWS EC2의 Public IP를 명시적으로 주입하여 Signaling 과정에서 정확한 후보 주소가 교환되도록 구성했습니다. 또한 Nginx에 Let's Encrypt 인증서를 마운트하여 WebRTC 통신의 필수 조건인 SSL 환경을 확보했습니다.
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground italic">"1만 개 쿠폰 발급 테스트 시 정합성 100% 보장 및 성능 약 60% 개선"</p>
+              <div>
+                <strong>2.2 나머지 할당 (Remainder Allocation) 알고리즘 도입</strong>
+                <p className="text-sm mt-1">
+                  <code>BigDecimal</code> 타입을 활용하여 나눗셈 계산 중 발생하는 나눌 수 없는 나머지 금액을 추출하고, 이 나머지 금액을 첫 번째 참여자에게 몰아주는 보정 로직을 추가하여 정합성을 맞췄습니다.
+                </p>
+                <CodeBlock label="SettlementService.java">
+                  {`BigDecimal amountToPayPerPerson = totalItemPrice.divide(participantCount, 0, RoundingMode.FLOOR);
+BigDecimal totalUserPay = amountToPayPerPerson.multiply(participantCount);
+BigDecimal remainder = totalItemPrice.subtract(totalUserPay);
+
+// 첫 번째 멤버에게 나머지 가산하여 오차 제거
+allocation.setDiffAmount(isFirstMember ? remainder : BigDecimal.ZERO);`}
+                </CodeBlock>
+              </div>
             </div>
+          ),
+        },
+        {
+          title: "3. 결과 및 회고 (Lessons Learned)",
+          content: (
+            <ul className="list-disc list-inside space-y-2 bg-slate-100 dark:bg-slate-900 p-4 rounded-md text-sm">
+              <li>
+                <strong>인프라 및 네트워크 이해도 향상:</strong> 복잡한 WebRTC 인프라를 Docker로 컨테이너화하고 SSL 및 네트워크 구성을 직접 다루면서 OSI 7 계층과 프로토콜에 대한 깊은 이해를 얻었습니다.
+              </li>
+              <li>
+                <strong>금융/정산 비즈니스 로직의 극의:</strong> 금전적 가치를 다루는 로직에서는 단순한 나눗셈이 아닌, 엣지 케이스까지 고려한 견고한 비즈니스 로직 설계(BigDecimal 활용)가 필수적임을 체감했습니다.
+              </li>
+            </ul>
           ),
         },
       ],
@@ -141,7 +148,7 @@ const PROJECTS = [
   {
     id: 2,
     title: "ZIP-CHACK - 꼼꼼하게 따져보는 원룸 리뷰 & 정보 플랫폼",
-    period: "2025.12.08 - 2025.12.29",
+    period: "2025.12",
     role: "Backend Engineer",
     techStack: ["Java 17", "Spring Boot", "Spring Security", "JPA", "WebSocket", "MySQL", "AWS S3", "Docker", "Vue 3"],
     situation: "실거주자의 솔직한 리뷰와 AI 상권 분석 기능을 결합하여, 원룸/오피스텔 정보를 투명하게 제공하는 부동산 플랫폼이 필요했습니다.",
@@ -224,78 +231,71 @@ const PROJECTS = [
     },
   },
   {
-    id: 3,
-    title: "SHOPPY - 실시간 소셜 쇼핑 및 정산 플랫폼",
-    period: "2026.01 - 2026.02",
-    role: "Backend Engineer (Infra)",
-    techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "OpenVidu (WebRTC)", "AWS EC2", "Docker", "Jenkins", "Nginx"],
-    situation: "비대면 쇼핑 시 소통의 한계와 복잡한 N분의 1 정산 과정의 번거로움을 해결해야 했습니다.",
-    task: "WebRTC 기반의 실시간 화상 공유 인프라를 구축하고, 1원의 오차도 없는 정밀한 N분의 1 정산 시스템을 개발하는 것이 목표였습니다.",
-    action: "1. OpenVidu 및 Kurento Media Server를 Docker 컨테이너로 온프레미스 배포하고, 네트워크 최적화를 통해 연결 성공률을 높였습니다.\n2. BigDecimal을 사용하여 부동소수점 오차 없는 정산 로직을 구현하고 나머지 분배 알고리즘을 적용했습니다.\n3. Jenkins와 Webhook을 연동하여 백엔드/프론트엔드 CI/CD 자동화 파이프라인을 구축했습니다.",
-    result: "외부 네트워크에서도 안정적인 화상 통화 환경을 구축했으며, 어떠한 금액 산정에서도 오차가 발생하지 않는 무결한 정산 시스템을 완성했습니다.",
-    image: "projects/project3-thumbnail.png",
+    id: 1,
+    title: "ReVibe - 한정판 스니커즈 리셀 플랫폼",
+    period: "2024.12 - 2025.01",
+    role: "Backend Engineer (Auth & Concurrency Control)",
+    techStack: ["Spring Boot", "Spring Security", "JWT", "Redis", "Redisson", "MySQL", "Docker"],
+    situation: "대규모 트래픽이 예상되는 리셀 플랫폼에서 사용자 인증의 보안성과 선착순 이벤트의 안정성 확보가 시급했습니다.",
+    task: "JWT 기반의 보안 인증 시스템 구축 및 수만 건의 동시 쿠폰 발급 요청 시 데이터 부정합을 방지하고 응답 속도를 최적화하는 것이 주 목표였습니다.",
+    action: "1. Spring Security와 JWT를 연동하여 인증/인가를 구현하고, 카카오 소셜 로그인을 통해 접근성을 높였습니다.\n2. 선착순 쿠폰 발급의 동시성 제어를 위해 Synchronized, 비관적 락 등을 거쳐 최종적으로 Redisson 분산락을 도입했습니다.\n3. @Transactional과 락 해제 시점의 불일치를 해결하기 위해 분산락 로직을 AOP화하여 데이터 정합성을 보장했습니다.",
+    result: "10,000건의 동시 발급 테스트를 성공적으로 완료했으며, Redisson 도입으로 기존 방식 대비 처리 속도를 약 60% 이상 향상시켰습니다.",
+    image: "projects/project1-thumbnail.png",
     troubleshooting: {
-      title: "WebRTC 인프라 네트워크 이슈 및 정산 금액 무결성 보장",
-      date: "2026-02-15",
-      environment: "OpenVidu, Docker, AWS EC2, Spring Boot 3.x, MySQL",
+      title: "선착순 쿠폰 발급 - Redisson 분산락 도입으로 정합성 및 성능 개선",
+      date: "2024-09-20",
+      environment: "Spring Boot 3.x, Spring Security 6, Redis, Redisson, MySQL",
       sections: [
         {
-          title: "1. 기술적 난관 (Technical Challenges)",
+          title: "1. 문제 상황 (Troubleshooting Cases)",
           content: (
             <div className="space-y-4">
-              <div>
-                <strong>1.1 WebRTC 연결 실패 (ICE Connection Failed)</strong>
-                <p className="text-sm mt-1">
-                  Docker 컨테이너 내부에서 실행되는 OpenVidu 서버가 클라이언트(브라우저)와 P2P 연결을 시도할 때, 사설 IP(Private IP)를 반환하여 외부 네트워크에서의 접근이 차단되는 현상이 발생했습니다.
-                </p>
-              </div>
-              <div>
-                <strong>1.2 정산 금액의 무결성 문제 (1원의 차이)</strong>
-                <p className="text-sm mt-1">
-                  10,000원을 3명이 나눌 경우 3,333.33...원이 되어, 단순 합산 시 9,999원이 되는 오차가 발생했습니다. 금융 관련 기능에서 이러한 오차는 서비스 신뢰도 하락의 원인이 됩니다.
-                </p>
+              <p className="text-sm">
+                초기에는 <code>synchronized</code> 키워드를 사용해 여러 스레드가 동시에 접근하는 것을 제한했지만, 단일 서버 환경에 국한되는 문제와 <code>@Transactional</code> 상호작용 이슈로 인해 동시성 제어가 완벽하지 않았습니다.
+              </p>
+              <ul className="list-disc list-inside text-sm space-y-1">
+                <li><strong>경합 조건(Race Condition):</strong> 쿠폰 수량 감소 시 여러 스레드가 동일한 재고를 읽어 초과 발급 발생.</li>
+                <li><strong>트랜잭션 커밋 이슈:</strong> <code>@Transactional</code>이 로직 수행 후 커밋되기 전 락이 먼저 풀려버리는 불일치 문제 확인.</li>
+              </ul>
+            </div>
+          ),
+        },
+        {
+          title: "2. 기술적 정지 및 의사 결정 (Decision Making)",
+          content: (
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-3 bg-slate-100 dark:bg-slate-900 rounded-lg">
+                  <h5 className="font-bold text-sm mb-1 line-through opacity-50">초기 시도: Synchronized/Pessimistic Lock</h5>
+                  <p className="text-xs">데이터 정합성은 확보되나, 무한 대기 현상 및 데드락 우려와 성능 저하(10s 이상) 발생.</p>
+                </div>
+                <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
+                  <h5 className="font-bold text-sm mb-1 text-primary">최종 선택: Redisson Distributed Lock</h5>
+                  <p className="text-xs">분산 환경에서도 일관성을 보장하며, 스핀 락 방식이 아닌 Pub/Sub 방식을 사용해 부하를 최소화하고 성능을 크게 개선.</p>
+                </div>
               </div>
             </div>
           ),
         },
         {
-          title: "2. 문제 해결 (Problem Solving)",
+          title: "3. 해결 방법 및 결과 (Implementation & Result)",
           content: (
             <div className="space-y-4">
-              <div>
-                <strong>2.1 Host Network Mode 및 Public IP 명시</strong>
-                <p className="text-sm mt-1">
-                  <code>docker-compose.yml</code>에서 OpenVidu 및 KMS 컨테이너의 네트워크 모드를 <code>host</code>로 설정하여 호스트의 네트워크 스택을 사용하게 하고, AWS EC2의 Public IP를 명시적으로 주입하여 Signaling 과정에서 정확한 후보 주소가 교환되도록 구성했습니다. 또한 Nginx에 Let's Encrypt 인증서를 마운트하여 WebRTC 통신의 필수 조건인 SSL 환경을 확보했습니다.
-                </p>
+              <p className="text-sm">
+                분산락 로직을 <strong>AOP(Aspect-Oriented Programming)</strong>화하여 비즈니스 로직과 분리하고, 트랜잭션 수명 주기와 조절함으로써 정합성 문제를 근본적으로 해결했습니다.
+              </p>
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border border-slate-200 dark:border-slate-800">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs font-bold px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded">성능 향상 결과</span>
+                </div>
+                <ul className="text-sm space-y-1">
+                  <li><strong>Synchronized:</strong> 10s 609ms (100명 요청)</li>
+                  <li><strong>Pessimistic Lock:</strong> 4s 406ms (100명 요청)</li>
+                  <li><strong>Redisson (AOP):</strong> <strong>4.5s (10,000명 요청 처리)</strong></li>
+                </ul>
               </div>
-              <div>
-                <strong>2.2 나머지 할당 (Remainder Allocation) 알고리즘 도입</strong>
-                <p className="text-sm mt-1">
-                  <code>BigDecimal</code> 타입을 활용하여 나눗셈 계산 중 발생하는 나눌 수 없는 나머지 금액을 추출하고, 이 나머지 금액을 첫 번째 참여자에게 몰아주는 보정 로직을 추가하여 정합성을 맞췄습니다.
-                </p>
-                <CodeBlock label="SettlementService.java">
-                  {`BigDecimal amountToPayPerPerson = totalItemPrice.divide(participantCount, 0, RoundingMode.FLOOR);
-BigDecimal totalUserPay = amountToPayPerPerson.multiply(participantCount);
-BigDecimal remainder = totalItemPrice.subtract(totalUserPay);
-
-// 첫 번째 멤버에게 나머지 가산하여 오차 제거
-allocation.setDiffAmount(isFirstMember ? remainder : BigDecimal.ZERO);`}
-                </CodeBlock>
-              </div>
+              <p className="text-sm text-muted-foreground italic">"1만 개 쿠폰 발급 테스트 시 정합성 100% 보장 및 성능 약 60% 개선"</p>
             </div>
-          ),
-        },
-        {
-          title: "3. 결과 및 회고 (Lessons Learned)",
-          content: (
-            <ul className="list-disc list-inside space-y-2 bg-slate-100 dark:bg-slate-900 p-4 rounded-md text-sm">
-              <li>
-                <strong>인프라 및 네트워크 이해도 향상:</strong> 복잡한 WebRTC 인프라를 Docker로 컨테이너화하고 SSL 및 네트워크 구성을 직접 다루면서 OSI 7 계층과 프로토콜에 대한 깊은 이해를 얻었습니다.
-              </li>
-              <li>
-                <strong>금융/정산 비즈니스 로직의 극의:</strong> 금전적 가치를 다루는 로직에서는 단순한 나눗셈이 아닌, 엣지 케이스까지 고려한 견고한 비즈니스 로직 설계(BigDecimal 활용)가 필수적임을 체감했습니다.
-              </li>
-            </ul>
           ),
         },
       ],
