@@ -19,7 +19,7 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-extrabold mb-8 text-white tracking-tight leading-tight [word-break:keep-all] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          <span className="block text-2xl md:text-4xl text-slate-200 font-bold mb-3 md:mb-5">
+          <span className="block text-3xl md:text-5xl text-slate-200 font-bold mb-3 md:mb-5">
             시스템 안정성을 최우선으로 하는
           </span>
           백엔드 엔지니어,{" "}
@@ -28,7 +28,7 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto [word-break:keep-all] animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+        <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto [word-break:keep-all] animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
           단순 구현을 넘어 단단한 서버 아키텍처를 설계합니다.
           <br className="hidden md:block" />
           기록과 소통으로 장애에 강건한 인프라를 구축합니다.
