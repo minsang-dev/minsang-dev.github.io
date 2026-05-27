@@ -14,22 +14,22 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
         <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <Badge variant="secondary" className="px-4 py-1.5 text-sm font-medium rounded-full border-primary/20 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-            Backend Engineer
+            Backend & Infra Engineer
           </Badge>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-extrabold mb-8 text-white tracking-tight leading-tight [word-break:keep-all] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          신뢰를 설계하는 <br className="hidden md:block" />
-          백엔드 엔지니어,{" "}
+          본질에 물음표를 던지는 <br className="hidden md:block" />
+          백엔드·인프라 엔지니어,{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
             김민상
           </span>
         </h1>
 
         <p className="text-xl md:text-2xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto [word-break:keep-all] animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          Java 웹 개발의 기본기부터 대용량 분산 시스템 설계까지.
+          단순한 동작을 넘어, 데이터 무결성과 단단한 서버 아키텍처를 고민합니다.
           <br className="hidden md:block" />
-          견고하고 확장 가능한 솔루션을 구축합니다.
+          기록과 소통을 바탕으로 장애에 강건한 인프라를 구축합니다.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
@@ -45,8 +45,7 @@ export default function HeroSection() {
 
           <Button
             size="lg"
-            variant="outline"
-            className="h-12 px-8 text-base border-blue-400/50 text-blue-400 hover:bg-blue-400/10 hover:text-blue-300 hover:border-blue-300 transition-all hover:scale-105"
+            className="h-12 px-8 text-base font-semibold bg-white text-blue-600 hover:bg-slate-100 transition-all hover:scale-105"
             onClick={() => {
               document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
             }}
