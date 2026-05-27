@@ -158,7 +158,7 @@ public void handlePaymentFailure(PaymentFailedEvent event) {
     task: "WebRTC 기반의 실시간 화상 공유 인프라를 구축하고, 1원의 오차도 없는 정밀한 N분의 1 정산 시스템을 개발하는 것이 목표였습니다.",
     action: "1. OpenVidu 및 Kurento Media Server를 Docker 컨테이너로 온프레미스 배포하고, 네트워크 최적화를 통해 연결 성공률을 높였습니다.\n2. BigDecimal을 사용하여 부동소수점 오차 없는 정산 로직을 구현하고 나머지 분배 알고리즘을 적용했습니다.\n3. Jenkins와 Webhook을 연동하여 백엔드/프론트엔드 CI/CD 자동화 파이프라인을 구축했습니다.",
     result: "외부 네트워크에서도 안정적인 화상 통화 환경을 구축했으며, 어떠한 금액 산정에서도 오차가 발생하지 않는 무결한 정산 시스템을 완성했습니다.",
-    image: "projects/project3-thumbnail.png",
+    image: "projects/project2-thumbnail.png",
     troubleshooting: {
       title: "WebRTC 인프라 네트워크 이슈 및 정산 금액 무결성 보장",
       date: "2026-02-15",
@@ -236,7 +236,7 @@ allocation.setDiffAmount(isFirstMember ? remainder : BigDecimal.ZERO);`}
     task: "매물의 생애주기를 관리하고 AWS S3를 이용한 이미지 파이프라인 구축, 그리고 WebSocket 기반 실시간 상태 동기화 채팅 시스템을 구현하는 역할을 맡았습니다.",
     action: "1. ListingService에 매물 생애주기 관리를 구현하고 @Transactional로 데이터 정합성을 보장했습니다.\n2. S3Service로 이미지 업로드/삭제 파이프라인을 구축하고 UUID 및 이중 확장자 검증을 적용해 보안을 강화했습니다.\n3. 매물 상태와 채팅방 상태가 실시간 동기화되도록 상태 머신 기반 채팅 시스템을 설계하고 STOMP 메시징을 연동했습니다.",
     result: "도메인 간 강결합을 통한 트랜잭션 보장으로 상태 불일치 문제를 원천 차단했으며, 서버-스토리지 분리 아키텍처를 완성했습니다.",
-    image: "projects/project2-thumbnail.png",
+    image: "projects/project3-thumbnail.png",
     troubleshooting: {
       title: "매물 상태와 채팅 프로세스의 정합성 보장 및 이미지 관리 최적화",
       date: "2025-12-25",

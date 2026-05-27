@@ -101,6 +101,21 @@ export default function AboutSection() {
                   </p>
                 </div>
 
+                {/* Education Item 1.5 */}
+                <div className="group relative pl-8 border-l-2 border-slate-200 dark:border-slate-800 hover:border-primary transition-colors">
+                  <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-2 border-slate-400 group-hover:border-primary transition-colors" />
+                  <div className="mb-1 flex flex-wrap items-center gap-2">
+                    <h4 className="font-bold text-lg">내일배움캠프 백엔드(Java/Spring) 7기</h4>
+                    <Badge variant="secondary" className="text-xs">수료</Badge>
+                  </div>
+                  <p className="text-sm text-slate-500 mb-2 flex items-center gap-1">
+                    <CalendarDays className="h-3 w-3" /> 2024.09 - 2025.02
+                  </p>
+                  <p className="text-slate-600 dark:text-slate-400">
+                    스파르타 주식회사 (960 Hours 집중 교육)
+                  </p>
+                </div>
+
                 {/* Education Item 2 */}
                 <div className="group relative pl-8 border-l-2 border-slate-200 dark:border-slate-800 hover:border-primary transition-colors">
                   <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-2 border-slate-400 group-hover:border-primary transition-colors" />

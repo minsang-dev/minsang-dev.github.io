@@ -11,6 +11,13 @@ import {
 // All items merged and sorted by date descending
 const TIMELINE_ITEMS = [
     {
+        date: "2026.04 ~ 05",
+        title: "ANVI",
+        description: "온디바이스 AI 기반 프라이버시 친화적 시험 부정행위 감독 솔루션.\nML Kit OCR 및 ArcFace 기반 인증 파이프라인 최적화.",
+        side: "left" as const,
+        type: "project" as const,
+    },
+    {
         date: "2026.03",
         title: "DONTTAz",
         description: "소비 루틴 분석 AI 기반 맞춤형 예산 할당 및 잉여 자금 강제 격리 핀테크 서비스\n 비동기 보상 트랜잭션을 통한 결제 데이터 정합성 문제 해결.",
@@ -35,6 +42,13 @@ const TIMELINE_ITEMS = [
         date: "2025.07",
         title: "SSAFY 14기 입과",
         description: "Java 전공 트랙 (진행 중)",
+        side: "right" as const,
+        type: "education" as const,
+    },
+    {
+        date: "2024.09 ~ 2025.02",
+        title: "내일배움캠프 백엔드(Java/Spring) 7기",
+        description: "스파르타 주식회사 (960 Hours 집중 교육 수료)",
         side: "right" as const,
         type: "education" as const,
     },
