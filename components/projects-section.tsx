@@ -3,19 +3,89 @@ import { CodeBlock } from "./troubleshooting-dialog"
 
 const PROJECTS = [
   {
+    id: 5,
+    title: "ANVI - 온디바이스 AI 기반 시험 부정행위 감독 솔루션",
+    period: "2026.04 - 2026.05",
+    role: "AI & Android & Infra",
+    techStack: ["Kotlin", "Jetpack Compose", "LiteRT", "Gemma", "YOLO", "MediaPipe", "Spring Boot", "Docker", "AWS EC2"],
+    situation: "기존의 비대면 시험 감독은 서버로 영상을 실시간 전송하여 심각한 개인정보 침해 논란과 서버 유지비용 폭증 문제를 안고 있었습니다.",
+    task: "네트워크 지연과 서버 인프라 의존성을 없애고, 사용자 디바이스 자체에서 동작하는 '온디바이스 AI 기반'의 프라이버시 친화적 부정행위 감지 파이프라인을 구축해야 했습니다.",
+    action: "1. ML Kit OCR에 4-Gate 검증 로직을 결합하고, ArcFace 모델을 통해 온디바이스 본인 인증(신원 확인) 기능을 구현했습니다.\n2. VLM과 YOLO를 연계한 2단계 감지 상태 머신을 설계하여 배터리와 연산량을 최적화했습니다.\n3. 얼굴 인식 시 발생하는 신분증 인쇄물과 실시간 카메라 간의 피처 불일치(Feature Mismatch)를 5프레임 통계 검증으로 보정했습니다.",
+    result: "서버 유지비용을 획기적으로 절감하며 실시간 감독 기능을 확보했습니다. 또한 본인 인증 인식 속도를 평균 0.2초로 단축하고 OOM 문제를 원천 차단하여 높은 안정성을 입증했습니다.",
+    image: "projects/project5-thumbnail.png",
+    troubleshooting: {
+      title: "온디바이스 본인인증 파이프라인: 피처 임베딩(Feature Embedding) 불일치 보정 및 추론 연산 경량화",
+      date: "2026-05-04",
+      environment: "Kotlin, Jetpack Compose, ML Kit OCR, ArcFace(TFLite)",
+      sections: [
+        {
+          title: "1. 기술적 난관 (Technical Challenges)",
+          content: (
+            <div className="space-y-4">
+              <div>
+                <strong>1.1 신분증 인식 시 잦은 OOM 및 연산 병목</strong>
+                <p className="text-sm mt-1">
+                  초기 VLM 기반 신분증 인식 시, 무거운 모델 연산량으로 인해 평균 13.2초의 지연 시간이 발생하고 안드로이드 기기에서 빈번한 메모리 부족(OOM) 현상이 나타났습니다.
+                </p>
+              </div>
+              <div>
+                <strong>1.2 인쇄물과 실시간 카메라 간의 피처 공간(Feature Space) 불일치</strong>
+                <p className="text-sm mt-1">
+                  ArcFace 모델로 신분증 사진(인쇄물)과 실시간 카메라의 실물을 대조할 때, 화질 열화 및 환경 차이로 인한 특징 벡터(Feature Vector) 왜곡이 발생하여 코사인 유사도가 급감하는(평균 0.36) 문제가 있었습니다.
+                </p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "2. 문제 해결 (Problem Solving)",
+          content: (
+            <div className="space-y-4">
+              <div>
+                <strong>2.1 정규식 파싱 + 4-Gate 검증 파이프라인 도입</strong>
+                <p className="text-sm mt-1">
+                  VLM을 배제하고 경량화된 <code>ML Kit OCR</code>에 고도화된 정규 표현식과 <strong>4-Gate 검증 로직(형식, 길이, 유효성 교차 검증 등)</strong>을 결합하여 텍스트를 추출하도록 전면 개편했습니다. 오인식을 방지하고 불필요한 GPU 연산을 줄여 메모리 안정성을 확보했습니다.
+                </p>
+              </div>
+              <div>
+                <strong>2.2 통계적 다중 검증 로직 도입</strong>
+                <p className="text-sm mt-1">
+                  이러한 피처 불일치를 보정하기 위해 단순히 단일 프레임 임계값을 조정하는 대신, 연속된 <strong>5프레임의 코사인 유사도</strong>를 수집하여 중앙값, 최소값, 편차를 종합적으로 분석하는 다중 검증 알고리즘을 도입했습니다.
+                </p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "3. 결과 및 회고 (Lessons Learned)",
+          content: (
+            <ul className="list-disc list-inside space-y-2 bg-slate-100 dark:bg-slate-900 p-4 rounded-md text-sm">
+              <li>
+                <strong>성능 최적화:</strong> 신분증 처리 속도를 13.2초에서 <strong>평균 0.2초</strong>로 대폭 단축시켰고, 지연 시간과 기기 발열 및 OOM 문제를 완전히 해결했습니다.
+              </li>
+              <li>
+                <strong>인식 정확도 개선:</strong> 피처 왜곡에 강건한(Robust) 알고리즘을 구축하여 까다로운 본인 인증 환경에서도 보안 마진을 지키며 <strong>100% 인증 성공률</strong>을 달성했습니다.
+              </li>
+            </ul>
+          ),
+        },
+      ],
+    },
+  },
+  {
     id: 4,
     title: "DONTTAz - 월급 로그아웃을 막아주는 나만의 비밀금고",
     period: "2026.03",
     role: "Backend Engineer",
     techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "RabbitMQ"],
-    situation: "빈번한 소액 자금 이동 시 발생하는 외부 오픈뱅킹 API의 호출 처리율 제한과 막대한 이체 수수료 문제가 있었습니다.",
-    task: "기존의 물리적 자금 이체 구조를 개편하여 API 수수료를 절감하고, 결제 정합성(1초 내 롤백)을 보장하는 내부 분산 트랜잭션 구조를 구축하는 것이었습니다.",
-    action: "1. 시스템 모계좌와 사용자별 내부 원장을 분리하여, 내부 거래는 Logical Transfer로 처리하도록 개편했습니다.\n2. @Transactional 적용 및 주기적 잔액 대사를 통해 내부 DB와 모계좌 잔액의 불일치를 차단했습니다.\n3. RabbitMQ를 활용한 비동기 보상 트랜잭션으로 결제 실패 시 즉각적인 롤백 로직을 붙였습니다.",
-    result: "내부 스왑 수수료를 100% 절감하였고, 외부망 장애로부터 무관한 높은 가용성을 확보했습니다. 부하 테스트를 통해 초당 1,000건의 요청에서도 99.9% 무결성을 증명했습니다.",
-    image: "projects/donttaz-thumbnail.png",
+    situation: "외부 오픈뱅킹 API와 내부 서비스 간의 트랜잭션 분리로 인해, 네트워크 지연 시 심각한 데이터 불일치(결제는 성공했으나 내부 잔액 미반영) 위험이 있었습니다.",
+    task: "서비스 간 강결합을 줄이고 응답 속도를 유지하면서도, 장애 발생 시 1초 이내에 결제 상태를 원상 복구(롤백)할 수 있는 분산 트랜잭션 시스템을 구축해야 했습니다.",
+    action: "1. RabbitMQ를 도입하여 비동기 메시징 기반의 Choreography Saga 패턴을 설계했습니다.\n2. 결제 실패 시 @TransactionalEventListener를 통해 취소 이벤트를 즉각 발행하고 보상 트랜잭션을 실행했습니다.\n3. 예외 처리 전용 큐(Exception Queue)와 백오프 기반 재시도 로직을 구성하여 메시지 유실을 원천 차단했습니다.",
+    result: "결제 실패 시 1초 이내 자동 롤백을 구현하여 결제 정합성 불일치 0건을 달성했습니다. 동기식 대비 응답 속도를 개선하며 초당 1,000건의 부하 환경에서도 안정적인 무결성을 입증했습니다.",
+    image: "projects/project4-thumbnail.png",
     troubleshooting: {
-      title: "금융 API 수수료 최적화 및 모계좌 기반 내부 원장 아키텍처 설계",
-      date: "2026-03-24",
+      title: "분산 트랜잭션 정합성 보장: RabbitMQ 기반 비동기 보상 트랜잭션(Saga) 구축",
+      date: "2026-03-26",
       environment: "Spring Boot 3.x, JPA, MySQL 8.0, RabbitMQ",
       sections: [
         {
@@ -23,11 +93,11 @@ const PROJECTS = [
           content: (
             <div className="space-y-4">
               <p className="text-sm">
-                초기 설계에서는 유저 간, 혹은 가상 금고 간 자금 이동이 빈번하게 일어날 때마다 외부 오픈뱅킹 API(FinAPI)를 직접 호출했습니다.
+                외부 결제망(오픈뱅킹 API)과 내부 DB 간의 상태를 동기화하는 과정에서 트랜잭션이 분리되어 있어, 네트워크 지연이나 내부 서버 에러 시 <strong>데이터 불일치(결제는 성공했으나 내부 잔액은 미반영)</strong> 문제가 발생할 위험이 컸습니다.
               </p>
               <ul className="list-disc list-inside text-sm space-y-1">
-                <li><strong>초발/초과 API 호출:</strong> 과도한 호출로 인한 Rate Limit 도달 위험.</li>
-                <li><strong>막대한 이체 수수료 발생:</strong> 자금이동 횟수에 정비례하여 기하급수적으로 늘어나는 외부망 이체 수수료의 비즈니스적 한계.</li>
+                <li><strong>성능 저하 우려:</strong> 기존의 동기식 2PC(2-Phase Commit) 방식은 응답 지연과 병목 현상을 유발.</li>
+                <li><strong>롤백의 어려움:</strong> 외부 API 호출이 이미 완료된 상태에서 내부 DB 에러 발생 시, 이를 되돌릴 자동화된 수단 부재.</li>
               </ul>
             </div>
           ),
@@ -37,15 +107,26 @@ const PROJECTS = [
           content: (
             <div className="space-y-4">
               <div>
-                <strong>2.1 시스템 모계좌 기반의 내부 원장 분리 (Logical Transfer)</strong>
+                <strong>2.1 Choreography Saga 패턴 및 보상 트랜잭션 도입</strong>
                 <p className="text-sm mt-1">
-                  모든 자금 흐름을 하나의 물리적 통합 <strong>‘시스템 모계좌’</strong>에 고정하고, 서비스 앱 단에서는 가상 내부 원장의 <code>데이터만 업데이트</code>하는 방향으로 전체 아키텍처를 개편(<code>AccountTransferService</code>)했습니다.
+                  RabbitMQ를 활용하여 비동기 메시징 기반의 이벤트 주도 아키텍처를 설계했습니다. 결제 실패 혹은 내부 DB 업데이트 실패 시 <code>@TransactionalEventListener</code>를 통해 즉각 <strong>'결제 취소 이벤트'</strong>를 발행하고, 컨슈머가 이를 수신해 보상 트랜잭션(오픈뱅킹 결제망 취소 API 호출)을 실행하도록 했습니다.
                 </p>
+                <CodeBlock label="PaymentEventListener.java">
+                  {`@TransactionalEventListener(phase = TransactionPhase.AFTER_ROLLBACK)
+public void handlePaymentFailure(PaymentFailedEvent event) {
+    // 결제 실패(롤백) 시 RabbitMQ로 보상 트랜잭션 메시지 발행
+    rabbitTemplate.convertAndSend(
+        "payment.exchange", 
+        "payment.rollback", 
+        new RollbackMessage(event.getPaymentId())
+    );
+}`}
+                </CodeBlock>
               </div>
               <div>
-                <strong>2.2 무결성(Integrity) 검증 및 RabbitMQ 보상 트랜잭션 롤백</strong>
+                <strong>2.2 예외 처리 전용 큐(Exception Queue) 및 재시도 메커니즘</strong>
                 <p className="text-sm mt-1">
-                  DB 업데이트 과정에는 철저한 <code>@Transactional</code>을 적용하고, 주기적으로 실제 모계좌 잔고와 맞는지 <strong>대사(Reconciliation)</strong> 작업을 하도록 했습니다. 만약 중간 처리 단계에서 장애/지연이 생겼을 땐 비동기 메시지 버스인 RabbitMQ를 거쳐 즉각적인 보상 트랜잭션이 발행되게 하여 1초 이내 안전 롤백 체계를 확립했습니다.
+                  보상 트랜잭션마저 네트워크 오류로 실패할 경우를 대비하여 <code>예외 처리 전용 큐(Exception Queue)</code>를 구성했습니다. 처리 실패 메시지를 안전하게 격리한 뒤, 백오프(Back-off) 알고리즘을 적용한 자동 재처리 로직을 추가하여 메시지 유실을 완벽히 차단했습니다.
                 </p>
               </div>
             </div>
@@ -56,10 +137,10 @@ const PROJECTS = [
           content: (
             <ul className="list-disc list-inside space-y-2 bg-slate-100 dark:bg-slate-900 p-4 rounded-md text-sm">
               <li>
-                <strong>이체 수수료 비용 100% 최적화:</strong> 잦은 내부 이동을 Logical Transfer로 대체하면서 오픈 API 호출 수수료 0원을 달성했습니다.
+                <strong>안정적인 결제 정합성 확보:</strong> 결제 실패 시 1초 이내에 자동 롤백되는 체계를 확립하여, 트랜잭션 불일치 건수를 0건으로 유지했습니다.
               </li>
               <li>
-                <strong>가용성과 처리 속도의 도약:</strong> 무거운 외부 금융 시스템과의 통신 병목을 우회함으로써 백엔드 내부 메모리 연산 수준으로 트랜잭션 처리 속도가 껑충 뛰었습니다. 오프라인 망 장애에도 강한 탄력성을 체감했습니다.
+                <strong>가용성과 성능 극대화:</strong> 외부 결제망과의 강결합을 비동기 메시징으로 풀어내어 동기식 처리 대비 결제 응답 속도를 대폭 개선했으며, 초당 1,000건의 부하 테스트에서도 99.9% 무결성을 증명했습니다.
               </li>
             </ul>
           ),
