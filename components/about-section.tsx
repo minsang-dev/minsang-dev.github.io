@@ -66,7 +66,7 @@ export default function AboutSection() {
 
               <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
                 <p>
-                  안녕하세요, 기술의 본질에 대해 끊임없이 물음표를 던지며 성장하는 백엔드 및 인프라 개발자 김민상입니다.
+                  안녕하세요, 기술의 본질에 대해 끊임없이 물음표를 던지며 성장하는 백엔드 개발자 김민상입니다.
                 </p>
                 <p>
                   단순히 기능이 동작하는 결과물보다 <span className="bg-primary/10 text-primary px-1 rounded">안정적인 서버 아키텍처</span>와 <span className="bg-primary/10 text-primary px-1 rounded">데이터 무결성</span>을 최우선으로 고려합니다.
