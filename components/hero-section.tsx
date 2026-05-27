@@ -20,16 +20,16 @@ export default function HeroSection() {
 
         <h1 className="text-5xl md:text-7xl font-extrabold mb-8 text-white tracking-tight leading-tight [word-break:keep-all] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           본질에 물음표를 던지는 <br className="hidden md:block" />
-          백엔드·인프라 엔지니어,{" "}
+          백엔드 및 인프라 엔지니어,{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
             김민상
           </span>
         </h1>
 
         <p className="text-xl md:text-2xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto [word-break:keep-all] animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          단순한 동작을 넘어, 데이터 무결성과 단단한 서버 아키텍처를 고민합니다.
+          단순 구현을 넘어 단단한 서버 아키텍처를 설계합니다.
           <br className="hidden md:block" />
-          기록과 소통을 바탕으로 장애에 강건한 인프라를 구축합니다.
+          기록과 소통으로 장애에 강건한 인프라를 구축합니다.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
@@ -45,7 +45,7 @@ export default function HeroSection() {
 
           <Button
             size="lg"
-            className="h-12 px-8 text-base font-semibold bg-white text-blue-600 hover:bg-slate-100 transition-all hover:scale-105"
+            className="h-12 px-8 text-base bg-white text-blue-600 hover:bg-slate-100 transition-all hover:scale-105"
             onClick={() => {
               document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
             }}
