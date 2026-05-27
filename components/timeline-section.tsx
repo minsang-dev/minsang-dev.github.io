@@ -46,6 +46,13 @@ const TIMELINE_ITEMS = [
         type: "education" as const,
     },
     {
+        date: "2025.03 ~ 06",
+        title: "마케팅 및 개발 인턴십",
+        description: "마케팅 전략 수립 및 개발 업무 수행",
+        side: "right" as const,
+        type: "career" as const,
+    },
+    {
         date: "2024.09 ~ 2025.02",
         title: "내일배움캠프 백엔드(Java/Spring) 7기",
         description: "스파르타 주식회사 (960 Hours 집중 교육 수료)",

@@ -74,7 +74,7 @@ const PROJECTS = [
   },
   {
     id: 4,
-    title: "DONTTAz - 월급 로그아웃을 막아주는 나만의 비밀금고",
+    title: "DONTTAz - 월급 로그아웃을 막아주는 비밀금고",
     period: "2026.03",
     role: "Backend Engineer",
     techStack: ["Java 17", "Spring Boot", "JPA", "MySQL", "RabbitMQ"],
@@ -228,7 +228,7 @@ allocation.setDiffAmount(isFirstMember ? remainder : BigDecimal.ZERO);`}
   },
   {
     id: 2,
-    title: "ZIP-CHACK - 꼼꼼하게 따져보는 원룸 리뷰 & 정보 플랫폼",
+    title: "ZIP-CHACK - 부동산 원룸 리뷰 & 정보 플랫폼",
     period: "2025.12",
     role: "Backend Engineer",
     techStack: ["Java 17", "Spring Boot", "Spring Security", "JPA", "WebSocket", "MySQL", "AWS S3", "Docker", "Vue 3"],
