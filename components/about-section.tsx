@@ -66,15 +66,15 @@ export default function AboutSection() {
 
               <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
                 <p>
-                  안녕하세요, <strong className="text-foreground">신뢰할 수 있는 백엔드 시스템</strong>을 설계하는 개발자 김민상입니다.
+                  안녕하세요, 기술의 본질에 대해 끊임없이 <strong className="text-foreground">물음표를 던지며 성장하는</strong> 백엔드 및 인프라 개발자 김민상입니다.
                 </p>
                 <p>
-                  단순히 기능이 동작하는 것을 넘어, <span className="bg-primary/10 text-primary px-1 rounded">데이터 무결성</span>과 <span className="bg-primary/10 text-primary px-1 rounded">시스템 안정성</span>을 최우선으로 고려합니다.
-                  Java와 Spring Boot를 주력으로 사용하며, 대용량 트래픽 처리를 위한 아키텍처 설계에 깊은 관심을 가지고 있습니다.
+                  단순히 기능이 동작하는 결과물보다 <span className="bg-primary/10 text-primary px-1 rounded">안정적인 서버 아키텍처</span>와 <span className="bg-primary/10 text-primary px-1 rounded">데이터 무결성</span>을 최우선으로 고려합니다.
+                  속도보다 품질을 타협하지 않으며, 대규모 트래픽과 시스템 확장성을 다각도로 고민해 장애에 강건한(Robust) 시스템을 설계하는 과정에서 큰 성취감을 느낍니다.
                 </p>
                 <p>
-                  비즈니스 요구사항을 명확히 분석하고, 이를 기술적으로 풀어내는 과정에서 즐거움을 느낍니다.
-                  팀원들과의 원활한 소통을 중요하게 생각하며, 함께 성장하는 개발 문화를 지향합니다.
+                  또한, 복잡한 서버 트러블슈팅 과정을 꼼꼼히 <strong className="text-foreground">문서화하는 습관</strong>을 통해 팀의 시행착오를 줄이는 데 기여합니다.
+                  확실한 기술적 근거로 소통하고 피드백을 적극 수용하는 <span className="bg-primary/10 text-primary px-1 rounded">건강한 커뮤니케이션</span>으로, 팀과 함께 신뢰받는 백엔드 시스템을 만들어가겠습니다.
                 </p>
               </div>
             </div>
