@@ -16,6 +16,7 @@ const SKILLS = {
     "Docker",
     "CI/CD",
     "Jenkins",
+    "Firebase App Distribution",
     "System Architecture",
     "Distributed Systems"
   ],

@@ -72,6 +72,7 @@ export const TechIcon = ({ name, size = 24 }: { name: string; size?: number }) =
     "Notion": "notion",
     "Python": "python",
     "Kotlin": "kotlin",
+    "Firebase App Distribution": "firebase",
   };
 
   const slug = slugMap[name] || name.toLowerCase().replace(/[^a-z0-9]/g, "");
