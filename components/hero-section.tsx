@@ -19,7 +19,9 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-extrabold mb-8 text-white tracking-tight leading-tight [word-break:keep-all] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          시스템 안정성을 최우선으로 하는 <br className="hidden md:block" />
+          <span className="block text-2xl md:text-4xl text-slate-200 font-bold mb-3 md:mb-5">
+            시스템 안정성을 최우선으로 하는
+          </span>
           백엔드 엔지니어,{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">
             김민상

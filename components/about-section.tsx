@@ -70,7 +70,7 @@ export default function AboutSection() {
                 </p>
                 <p>
                   단순히 기능이 동작하는 결과물보다 <span className="bg-primary/10 text-primary px-1 rounded">안정적인 서버 아키텍처</span>와 <span className="bg-primary/10 text-primary px-1 rounded">데이터 무결성</span>을 최우선으로 고려합니다.
-                  속도보다 품질을 타협하지 않으며, 대규모 트래픽과 시스템 확장성을 다각도로 고민해 장애에 강건한(Robust) 시스템을 설계하는 과정에서 큰 성취감을 느낍니다.
+                  속도보다 품질을 타협하지 않으며, 대규모 트래픽과 시스템 확장성을 다각도로 고민해 장애에 강건한 시스템을 설계하는 과정에서 큰 성취감을 느낍니다.
                 </p>
                 <p>
                   또한, 복잡한 서버 트러블슈팅 과정을 꼼꼼히 문서화하는 습관을 통해 팀의 시행착오를 줄이는 데 기여합니다.
