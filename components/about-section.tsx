@@ -66,14 +66,14 @@ export default function AboutSection() {
 
               <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
                 <p>
-                  안녕하세요, 기술의 본질에 대해 끊임없이 <strong className="text-foreground">물음표를 던지며 성장하는</strong> 백엔드 및 인프라 개발자 김민상입니다.
+                  안녕하세요, 기술의 본질에 대해 끊임없이 물음표를 던지며 성장하는 백엔드 및 인프라 개발자 김민상입니다.
                 </p>
                 <p>
                   단순히 기능이 동작하는 결과물보다 <span className="bg-primary/10 text-primary px-1 rounded">안정적인 서버 아키텍처</span>와 <span className="bg-primary/10 text-primary px-1 rounded">데이터 무결성</span>을 최우선으로 고려합니다.
                   속도보다 품질을 타협하지 않으며, 대규모 트래픽과 시스템 확장성을 다각도로 고민해 장애에 강건한(Robust) 시스템을 설계하는 과정에서 큰 성취감을 느낍니다.
                 </p>
                 <p>
-                  또한, 복잡한 서버 트러블슈팅 과정을 꼼꼼히 <strong className="text-foreground">문서화하는 습관</strong>을 통해 팀의 시행착오를 줄이는 데 기여합니다.
+                  또한, 복잡한 서버 트러블슈팅 과정을 꼼꼼히 문서화하는 습관을 통해 팀의 시행착오를 줄이는 데 기여합니다.
                   확실한 기술적 근거로 소통하고 피드백을 적극 수용하는 <span className="bg-primary/10 text-primary px-1 rounded">건강한 커뮤니케이션</span>으로, 팀과 함께 신뢰받는 백엔드 시스템을 만들어가겠습니다.
                 </p>
               </div>
@@ -121,7 +121,7 @@ export default function AboutSection() {
                   <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-2 border-slate-400 group-hover:border-primary transition-colors" />
                   <div className="mb-1 flex flex-wrap items-center gap-2">
                     <h4 className="font-bold text-lg">전남대학교</h4>
-                    <Badge variant="secondary" className="text-xs"></Badge>
+                    <Badge variant="secondary" className="text-xs">졸업</Badge>
                   </div>
                   <p className="text-sm text-slate-500 mb-2 flex items-center gap-1">
                     <CalendarDays className="h-3 w-3" /> 2020.03 - 2024.02
