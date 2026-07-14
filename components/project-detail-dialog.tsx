@@ -14,6 +14,20 @@ import { ExternalLink, X, ChevronDown } from "lucide-react"
 import Image from "next/image"
 import { TroubleshootingLog } from "./troubleshooting-dialog"
 
+const STAR_COLORS = {
+  situation: "bg-blue-50 dark:bg-blue-950/50 border-blue-200 dark:border-blue-800",
+  task: "bg-purple-50 dark:bg-purple-950/50 border-purple-200 dark:border-purple-800",
+  action: "bg-green-50 dark:bg-green-950/50 border-green-200 dark:border-green-800",
+  result: "bg-amber-50 dark:bg-amber-950/50 border-amber-200 dark:border-amber-800",
+}
+
+const STAR_TEXT_COLORS = {
+  situation: "text-blue-700 dark:text-blue-300",
+  task: "text-purple-700 dark:text-purple-300",
+  action: "text-green-700 dark:text-green-300",
+  result: "text-amber-700 dark:text-amber-300",
+}
+
 // Project 타입 정의
 export interface Project {
   id: number
@@ -58,7 +72,7 @@ export function ProjectDetailDialog({ project, children }: ProjectDetailDialogPr
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="!max-w-none w-[100vw] h-[100vh] sm:w-[98vw] sm:h-[96vh] p-0 flex flex-col gap-0 overflow-hidden border-0 sm:border sm:rounded-lg rounded-none">
+      <DialogContent className="w-[100vw] h-[100vh] sm:w-[90vw] sm:h-[90vh] sm:max-w-5xl p-0 flex flex-col gap-0 overflow-hidden border-0 sm:border sm:rounded-lg rounded-none">
         {/* 닫기 버튼 (고정) */}
         <DialogHeader className="sr-only">
           <DialogTitle>{project.title}</DialogTitle>
@@ -252,55 +266,57 @@ export function ProjectDetailDialog({ project, children }: ProjectDetailDialogPr
 
             <hr className="border-border my-8" />
 
-            {/* ── 🧩 개발 이슈 ── */}
+            {/* ── 🧩 개발 이슈 (Engineering STAR) ── */}
             <section className="py-2">
-              <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-4">
-                🧩 개발 이슈
+              <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-6">
+                🧩 개발 이슈 (Engineering STAR)
               </h3>
 
-              {hasDevIssues ? (
-                <ul className="space-y-6 ml-1">
-                  {devIssues.map((item, i) => (
-                    <li key={i} className="space-y-2">
-                      <div className="flex items-start gap-3 text-foreground/90">
-                        <span className="text-primary mt-1.5 text-xs">●</span>
-                        <div className="text-base leading-relaxed space-y-2">
-                          <p>
-                            <span className="text-red-500 dark:text-red-400 font-bold">이슈:</span>{" "}
-                            {item.issue}
-                          </p>
-                          <p className="pl-0">
-                            <span className="text-emerald-600 dark:text-emerald-400 font-bold">해결:</span>{" "}
-                            {item.solution}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : hasTroubleshooting ? (
-                /* 기존 troubleshooting 데이터를 스크롤 형식으로 표시 */
-                <div className="space-y-6 ml-1">
-                  {project.troubleshooting!.sections.map((section, i) => (
-                    <div key={i} className="space-y-2">
-                      <h4 className="font-semibold text-foreground text-base">{section.title}</h4>
-                      <div className="text-sm leading-relaxed text-foreground/85 pl-4 border-l-2 border-border">
-                        {section.content}
-                      </div>
-                    </div>
-                  ))}
+              <div className="grid gap-6 ml-1">
+                {/* Situation */}
+                <div className={`p-5 rounded-xl border ${STAR_COLORS.situation}`}>
+                  <h4 className={`font-bold mb-3 flex items-center gap-2 ${STAR_TEXT_COLORS.situation}`}>
+                    <span className="bg-blue-200 dark:bg-blue-900 px-2 py-1 rounded text-xs">Situation</span>
+                    배경 및 문제
+                  </h4>
+                  <p className="text-base leading-relaxed whitespace-pre-line text-foreground/90">
+                    {project.situation}
+                  </p>
                 </div>
-              ) : (
-                /* action 데이터에서 폴백 */
-                <ul className="space-y-3 ml-1">
-                  {project.action.split('\n').filter(Boolean).map((line, i) => (
-                    <li key={i} className="flex items-start gap-3 text-foreground/90">
-                      <span className="text-primary mt-1.5 text-xs">●</span>
-                      <span className="text-base leading-relaxed">{line.replace(/^\d+\.\s*/, '')}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+
+                {/* Task */}
+                <div className={`p-5 rounded-xl border ${STAR_COLORS.task}`}>
+                  <h4 className={`font-bold mb-3 flex items-center gap-2 ${STAR_TEXT_COLORS.task}`}>
+                    <span className="bg-purple-200 dark:bg-purple-900 px-2 py-1 rounded text-xs">Task</span>
+                    기술적 난제
+                  </h4>
+                  <p className="text-base leading-relaxed whitespace-pre-line text-foreground/90">
+                    {project.task}
+                  </p>
+                </div>
+
+                {/* Action */}
+                <div className={`p-5 rounded-xl border ${STAR_COLORS.action}`}>
+                  <h4 className={`font-bold mb-3 flex items-center gap-2 ${STAR_TEXT_COLORS.action}`}>
+                    <span className="bg-green-200 dark:bg-green-900 px-2 py-1 rounded text-xs">Action</span>
+                    해결책 및 아키텍처
+                  </h4>
+                  <p className="text-base leading-relaxed whitespace-pre-line text-foreground/90">
+                    {project.action}
+                  </p>
+                </div>
+
+                {/* Result */}
+                <div className={`p-5 rounded-xl border ${STAR_COLORS.result}`}>
+                  <h4 className={`font-bold mb-3 flex items-center gap-2 ${STAR_TEXT_COLORS.result}`}>
+                    <span className="bg-amber-200 dark:bg-amber-900 px-2 py-1 rounded text-xs">Result</span>
+                    성과 및 임팩트
+                  </h4>
+                  <p className="text-base leading-relaxed whitespace-pre-line text-foreground/90">
+                    {project.result}
+                  </p>
+                </div>
+              </div>
             </section>
 
             <hr className="border-border my-8" />
