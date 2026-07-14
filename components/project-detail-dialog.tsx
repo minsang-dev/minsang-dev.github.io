@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, X, ChevronDown } from "lucide-react"
+import { ExternalLink, X, ChevronDown, Trophy } from "lucide-react"
 import Image from "next/image"
 import { TroubleshootingLog } from "./troubleshooting-dialog"
 
@@ -52,6 +52,11 @@ export interface Project {
   techSelection?: { name: string; reason: string }[]
   devIssues?: { issue: string; solution: string }[]
   retrospective?: string
+  detailedContributions?: {
+    title: string;
+    percentage: number;
+    description: string;
+  }[]
 }
 
 interface ProjectDetailDialogProps {
@@ -103,10 +108,11 @@ export function ProjectDetailDialog({ project, children }: ProjectDetailDialogPr
 
             {/* 수상 배지 */}
             {project.award && (
-              <div className="mt-3">
-                <Badge className="bg-amber-100/95 text-amber-800 dark:bg-amber-900/90 dark:text-amber-200 border-amber-300 dark:border-amber-700 gap-1 shadow-md text-sm px-3 py-1">
-                  🏆 {project.award}
-                </Badge>
+              <div className="mt-4 flex items-center justify-center">
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 shadow-[0_0_15px_rgba(251,191,36,0.5)] border border-amber-200 text-amber-950 font-extrabold text-sm sm:text-base animate-pulse">
+                  <Trophy className="w-5 h-5 fill-amber-700 text-amber-800" />
+                  <span>{project.award}</span>
+                </div>
               </div>
             )}
 
@@ -152,18 +158,6 @@ export function ProjectDetailDialog({ project, children }: ProjectDetailDialogPr
 
             <hr className="border-border my-8" />
 
-            {/* ── ⏱ 개발 기간 ── */}
-            <section className="py-2">
-              <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-3">
-                ⏱ 개발 기간
-              </h3>
-              <p className="text-foreground/80 pl-1 border-l-2 border-primary/30 ml-1 py-1 px-4">
-                {project.period}
-              </p>
-            </section>
-
-            <hr className="border-border my-8" />
-
             {/* ── 👥 구성원 ── */}
             <section className="py-2">
               <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-3">
@@ -178,29 +172,49 @@ export function ProjectDetailDialog({ project, children }: ProjectDetailDialogPr
 
             {/* ── 🎯 기여 ── */}
             <section className="py-2">
-              <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-3">
-                🎯 기여
+              <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-4">
+                🎯 기여 및 역할
               </h3>
-              <div className="flex flex-wrap gap-2 ml-1">
-                {project.contributions ? (
-                  project.contributions.map((c) => (
+              {project.detailedContributions ? (
+                <div className="space-y-5 ml-1">
+                  {project.detailedContributions.map((dc, i) => (
+                    <div key={i} className="space-y-1.5">
+                      <div className="flex justify-between items-center text-sm font-bold">
+                        <span className="text-foreground/90">{dc.title}</span>
+                        <span className="text-blue-600 dark:text-blue-400">{dc.percentage}%</span>
+                      </div>
+                      <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-blue-500 dark:bg-blue-500 rounded-full transition-all duration-1000 ease-out" 
+                          style={{ width: `${dc.percentage}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1 font-medium">{dc.description}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-2 ml-1">
+                  {project.contributions ? (
+                    project.contributions.map((c) => (
+                      <Badge
+                        key={c}
+                        variant="outline"
+                        className="text-sm px-3 py-1.5 bg-background hover:bg-muted transition-colors"
+                      >
+                        {c}
+                      </Badge>
+                    ))
+                  ) : (
                     <Badge
-                      key={c}
                       variant="outline"
-                      className="text-sm px-3 py-1.5 bg-background hover:bg-muted transition-colors"
+                      className="text-sm px-3 py-1.5 bg-background"
                     >
-                      {c}
+                      {project.role}
                     </Badge>
-                  ))
-                ) : (
-                  <Badge
-                    variant="outline"
-                    className="text-sm px-3 py-1.5 bg-background"
-                  >
-                    {project.role}
-                  </Badge>
-                )}
-              </div>
+                  )}
+                </div>
+              )}
             </section>
 
             <hr className="border-border my-8" />
@@ -322,12 +336,24 @@ export function ProjectDetailDialog({ project, children }: ProjectDetailDialogPr
             <hr className="border-border my-8" />
 
             {/* ── 💭 개발 후 느낀점 ── */}
-            <section className="py-2 pb-16">
+            <section className="py-2">
               <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-4">
                 💭 개발 후 느낀점
               </h3>
               <p className="text-base leading-relaxed text-foreground/90 ml-1 whitespace-pre-line">
                 {retrospectiveText}
+              </p>
+            </section>
+
+            <hr className="border-border my-8" />
+
+            {/* ── ⏱ 개발 기간 ── */}
+            <section className="py-2 pb-16">
+              <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-3">
+                ⏱ 개발 기간
+              </h3>
+              <p className="text-foreground/80 pl-1 border-l-2 border-primary/30 ml-1 py-1 px-4 text-base">
+                {project.period}
               </p>
             </section>
           </div>

@@ -22,10 +22,10 @@ export default function ProjectCard({ project }: { project: Project }) {
             {/* Award Badge */}
             {project.award && (
               <div className="absolute top-3 left-3 z-10">
-                <Badge className="bg-amber-100/95 text-amber-800 dark:bg-amber-900/90 dark:text-amber-200 border-amber-300 dark:border-amber-700 gap-1 shadow-md backdrop-blur-sm">
-                  <Trophy className="h-3 w-3" />
-                  {project.award}
-                </Badge>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 shadow-lg shadow-amber-500/40 border border-amber-200/50 text-amber-950 font-bold text-xs backdrop-blur-md">
+                  <Trophy className="w-3.5 h-3.5 fill-amber-700 text-amber-800" />
+                  <span>{project.award}</span>
+                </div>
               </div>
             )}
             {/* Hover Overlay */}
