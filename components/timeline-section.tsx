@@ -41,7 +41,7 @@ const TIMELINE_ITEMS = [
     {
         date: "2025.07",
         title: "SSAFY 14기 입과",
-        description: "Java 전공 트랙 (진행 중)",
+        description: "Java 전공 트랙 (수료)",
         side: "right" as const,
         type: "education" as const,
     },
@@ -70,7 +70,7 @@ const TIMELINE_ITEMS = [
     {
         date: "2024.02",
         title: "전남대학교 졸업",
-        description: "",
+        description: "학점 4.23/4.5 로 수석 졸업",
         side: "right" as const,
         type: "education" as const,
     },
