@@ -90,7 +90,7 @@ export default function AboutSection() {
                 <div className="group relative pl-8 border-l-2 border-slate-200 dark:border-slate-800 hover:border-primary transition-colors">
                   <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-2 border-slate-400 group-hover:border-primary transition-colors" />
                   <div className="mb-1 flex flex-wrap items-center gap-2">
-                    <h4 className="font-bold text-lg">Samsung Software Academy for Youth (SSAFY)</h4>
+                    <h4 className="font-bold text-lg">삼성청년SW·AI아카데미 (SSAFY) 14기 수료</h4>
                     <Badge variant="secondary" className="text-xs">Java 전공</Badge>
                   </div>
                   <p className="text-sm text-slate-500 mb-2 flex items-center gap-1">
@@ -107,17 +107,16 @@ export default function AboutSection() {
                 <div className="group relative pl-8 border-l-2 border-slate-200 dark:border-slate-800 hover:border-primary transition-colors">
                   <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-2 border-slate-400 group-hover:border-primary transition-colors" />
                   <div className="mb-1 flex flex-wrap items-center gap-2">
-                    <h4 className="font-bold text-lg">Sparta Backend (Java/Spring) 7기</h4>
-                    <Badge variant="secondary" className="text-xs">수료</Badge>
+                    <h4 className="font-bold text-lg">스파르타 백엔드 7기 수료</h4>
+                    <Badge variant="secondary" className="text-xs">Java/Spring</Badge>
                   </div>
                   <p className="text-sm text-slate-500 mb-2 flex items-center gap-1">
                     <CalendarDays className="h-3 w-3" /> 2024.09 - 2025.02
                   </p>
                   <ul className="text-slate-600 dark:text-slate-400 text-sm space-y-1.5 list-disc pl-4 mt-2">
-                    <li>Java, Spring Boot, JPA, MySQL, Redis 기반 백엔드 서버 개발 - RESTful API 설계 및 Spring Security 인증·인가 구현</li>
-                    <li>Docker, AWS EC2·RDS 기반 배포 환경 구성 - 3~5인 팀 프로젝트에서 요구사항 분석·DB 모델링·API 설계·테스트 코드 작성 전 과정 수행</li>
-                    <li>팀 리드 및 트러블슈팅 경험을 통한 문제 분석 및 서비스 성능 개선</li>
-                    <li>예외 처리 표준화 및 사용자 경험을 고려한 API 설계 적용</li>
+                    <li>Java, Spring Boot, JPA, MySQL, Redis 기반 백엔드 서버 개발</li>
+                    <li>RESTful API 설계 및 Spring Security 인증·인가 구현</li>
+                    <li>3~5인 팀 프로젝트에서 팀 리드로서, 요구사항 분석·DB 모델링·API 설계·테스트 코드 작성 전 과정 수행</li>
                   </ul>
                 </div>
               </div>

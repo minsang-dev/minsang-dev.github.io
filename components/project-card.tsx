@@ -21,10 +21,18 @@ export default function ProjectCard({ project }: { project: Project }) {
             />
             {/* Award Badge */}
             {project.award && (
-              <div className="absolute top-3 left-3 z-10">
+              <div className="absolute top-3 left-3 z-20">
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 shadow-lg shadow-amber-500/40 border border-amber-200/50 text-amber-950 font-bold text-xs backdrop-blur-md">
                   <Trophy className="w-3.5 h-3.5 fill-amber-700 text-amber-800" />
                   <span>{project.award}</span>
+                </div>
+              </div>
+            )}
+            {/* Custom Badge */}
+            {project.badge && (
+              <div className="absolute top-3 right-3 z-20">
+                <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg shadow-blue-500/40 border border-blue-400/50 text-white font-bold text-xs backdrop-blur-md">
+                  <span>{project.badge}</span>
                 </div>
               </div>
             )}

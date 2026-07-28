@@ -11,6 +11,13 @@ import {
 // All items merged and sorted by date descending
 const TIMELINE_ITEMS = [
     {
+        date: "2026.06",
+        title: "SSAFY 14기 수료",
+        description: "삼성청년SW·AI아카데미 1년 과정 수료.\nJava 전공 트랙.",
+        side: "right" as const,
+        type: "education" as const,
+    },
+    {
         date: "2026.04 ~ 05",
         title: "ANVI",
         description: "온디바이스 AI 기반 프라이버시 친화적 시험 부정행위 감독 솔루션.\nML Kit OCR 및 ArcFace 기반 인증 파이프라인 최적화.",
@@ -41,7 +48,7 @@ const TIMELINE_ITEMS = [
     {
         date: "2025.07",
         title: "SSAFY 14기 입과",
-        description: "Java 전공 트랙 (수료)",
+        description: "캠퍼스 지역대표.",
         side: "right" as const,
         type: "education" as const,
     },
@@ -70,7 +77,7 @@ const TIMELINE_ITEMS = [
     {
         date: "2024.02",
         title: "전남대학교 졸업",
-        description: "학점 4.23/4.5 로 수석 졸업",
+        description: "학점 4.23/4.5 수석 졸업",
         side: "right" as const,
         type: "education" as const,
     },

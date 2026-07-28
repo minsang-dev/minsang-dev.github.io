@@ -44,6 +44,7 @@ export interface Project {
   troubleshooting?: TroubleshootingLog
   link?: string
   award?: string
+  badge?: string
   // 새로 추가되는 필드 (참고 사이트 형식)
   intro?: string
   teamComposition?: string
